@@ -1,0 +1,2 @@
+CompileFlags:
+	Add: [-I/home/steve/workspace/godot-cpp/gdextension, -I/home/steve/workspace/godot-cpp/include, -I/home/steve/workspace/godot-cpp/gen/include, -I/home/steve/workspace/godot-cpp/src]
