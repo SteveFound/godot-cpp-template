@@ -50,9 +50,8 @@ env.Append(CPPPATH=directories)
 # Find all cpp files below src
 sources = []
 for d in directories:
-    sources.append(Glob(d + "*.cpp"))
-
-
+    if d != "src/gen/":
+        sources.append(Glob(d + "*.cpp"))
 
 if env["target"] in ["editor", "template_debug"]:
     try:
