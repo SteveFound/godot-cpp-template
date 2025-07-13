@@ -37,9 +37,6 @@ Run the following command to download godot-cpp:
 
 env = SConscript("godot-cpp/SConstruct", {"env": env, "customs": customs})
 
-# env.Append(CPPPATH=["src/"])
-#sources = Glob("src/*.cpp")
-
 # Find all directories below src recursively
 directories = ["src/"]
 for root, dirs, files in os.walk("src"):
@@ -47,12 +44,13 @@ for root, dirs, files in os.walk("src"):
 
 env.Append(CPPPATH=directories)
 
-# Find all cpp files below src
+# Find all cpp files below src but ignore the src/gen directory
 sources = []
 for d in directories:
     if d != "src/gen/":
         sources.append(Glob(d + "*.cpp"))
 
+# Handle src/gen here
 if env["target"] in ["editor", "template_debug"]:
     try:
         doc_data = env.GodotCPPDocData("src/gen/doc_data.gen.cpp", source=Glob("doc_classes/*.xml"))
